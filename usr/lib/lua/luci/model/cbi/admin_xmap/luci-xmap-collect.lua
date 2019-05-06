@@ -1,7 +1,7 @@
 local fs = require "nixio.fs"
 
 
-m=Map("luci-xmap-collect",translate("中控管理"),translate("XMap-Collect 中控数据转接器, 参考文档 <a href=http://doc.hx-kong.com target=hx-kong>http://doc.hx-kong.com</a>"))
+m=Map("luci-xmap-collect",translate("中控管理"),translate("XMap-Collect 中控数据转接器, 参考文档 <a href=http://xmap.hx-kong.com/doc target=_blank>http://xmap.hx-kong.com/doc</a>"))
 s=m:section(TypedSection,"collect-service","")
 s.addremove=false
 s.anonymous=true

@@ -1,7 +1,7 @@
 local fs = require "nixio.fs"
 
 
-m=Map("luci-xmap",translate("中控管理"),translate("XMap 物联网中控系统, 参考文档 <a href=http://doc.hx-kong.com target=hx-kong>http://doc.hx-kong.com</a>"))
+m=Map("luci-xmap",translate("中控管理"),translate("XMap 物联网中控系统, 参考文档 <a href=http://xmap.hx-kong.com/doc target=_blank>http://xmap.hx-kong.com/doc</a>"))
 s=m:section(TypedSection,"dtrs","")
 s.addremove=false
 s.anonymous=true
