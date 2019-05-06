@@ -1,0 +1,4 @@
+
+config collect-service
+	option enabled '1'
+
