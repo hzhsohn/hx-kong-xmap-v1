@@ -21,4 +21,10 @@ s.anonymous=true
       nixio.fs.writefile("/etc/xmap/xmap-collect.config", value)
 	end
 		
+  --保存事件
+  local apply = luci.http.formvalue("cbi.apply")
+  if apply then
+        io.popen("/etc/xmap/luci-xmap-collect.sh")
+  end
+  
 return m

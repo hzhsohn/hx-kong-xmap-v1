@@ -7,10 +7,25 @@ s.addremove=false
 s.anonymous=true
 
   --中控系统是否启用
-	xmap_enable = s:option(Flag,"enabled","XMap服务  " .. translate("Enable"))
+	xmap_enable = s:option(Flag,"enabled","XMap服务  " .. translate("Enable")," 设备UUID : "..nixio.fs.readfile("/root/secr/kit-uuid") or "")
 
+	--中控名称
+  dn_cfg = s:option(Value, "1", "中控名称")
+	dn_cfg.rmempty = false
+	dn_cfg.rows = 1
+	
+	function dn_cfg.cfgvalue()
+		return nixio.fs.readfile("/root/secr/my-name") or ""
+	end
+	function dn_cfg.write(self, section, value)
+      value=value:gsub(" ", "")
+      value=value:gsub("\r\n?", "")
+      value=value:gsub("\n", "")
+      nixio.fs.writefile("/root/secr/my-name", value)
+	end
+	
   -- caid配置
-	caid_cfg = s:option(Value, "1", "CAID区域码<br/>(清空输入空格保存) ")
+	caid_cfg = s:option(Value, "2", "CAID区域码","清空输入空格保存")
 	caid_cfg.rmempty = true
 	caid_cfg.rows = 1
 	
@@ -20,7 +35,13 @@ s.anonymous=true
 	function caid_cfg.write(self, section, value)
       value=value:gsub(" ", "")
       value=value:gsub("\r\n?", "\n")
+      value=value:gsub("\n", "")
       nixio.fs.writefile("/root/secr/caid", value)
 	end
-		
+
+  --保存事件
+  local apply = luci.http.formvalue("cbi.apply")
+  if apply then
+        io.popen("/etc/xmap/luci-xmap.sh")
+  end
 return m
