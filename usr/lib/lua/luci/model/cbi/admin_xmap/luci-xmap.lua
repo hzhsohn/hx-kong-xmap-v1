@@ -23,9 +23,24 @@ s.anonymous=true
       value=value:gsub("\n", "")
       nixio.fs.writefile("/root/secr/my-name", value)
 	end
+		
+  -- dpid配置
+	dpid_cfg = s:option(Value, "2", "DPID联网授权码","清空输入空格保存")
+	dpid_cfg.rmempty = true
+	dpid_cfg.rows = 1
+	
+	function dpid_cfg.cfgvalue()
+		return nixio.fs.readfile("/root/secr/dpid") or ""
+	end
+	function dpid_cfg.write(self, section, value)
+      value=value:gsub(" ", "")
+      value=value:gsub("\r\n?", "\n")
+      value=value:gsub("\n", "")
+      nixio.fs.writefile("/root/secr/dpid", value)
+	end
 	
   -- caid配置
-	caid_cfg = s:option(Value, "2", "CAID区域码","清空输入空格保存")
+	caid_cfg = s:option(Value, "3", "CAID区域码","清空输入空格保存")
 	caid_cfg.rmempty = true
 	caid_cfg.rows = 1
 	
