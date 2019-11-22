@@ -1,1 +1,5 @@
 硬件基于mt7620a的方案
+
+4G 网卡
+
+https://blog.csdn.net/u013008311/article/details/79241243
