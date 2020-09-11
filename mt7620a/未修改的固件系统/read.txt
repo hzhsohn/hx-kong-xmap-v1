@@ -1,3 +1,11 @@
-lede-ramips-mt7620-zbt-wep357-squashfs-sysupgrade.bin
+水桶路由固件lede-ramips-mt7620-zbt-wep357-squashfs-sysupgrade
 授权方法
 升级后接上网络后 浏览器访问 http://192.168.1.1/cgi-bin/auth.cgi
+
+
+//-------------------------------------------
+openwrt编译版本
+
+Target System (Mediatek Ralink MIPS)
+Subtarget (MT7620 based boards)
+Target Profile (Zbtlink ZBT-WE826-E)
